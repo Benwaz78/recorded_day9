@@ -1,0 +1,55 @@
+{% extends 'classwork_app/base.html' %}
+{% load static %}
+<!Doctype html>
+{% block title %}
+About Us
+{% endblock %}
+
+{% block content %}
+<section id="sectionTitle">
+  <div class="pageTitle">
+    <h1>{{ count }} Post From {{ name }} Category</h1>
+  </div>
+</section>
+<!-- END OF PAGE TITLE -->
+<section id="content">
+  <div class="row">
+    <div class="col-sm-9" id="mainContent">
+      {% if pst_list %}
+        {% for ps in pst_list %}
+        <div class="row">
+          <div class="col-md-4 col-sm-4">
+            <div class="thumbnail">
+              <img src="{{ ps.pst_img.url }}">
+            </div>
+          </div> 
+          <div class="col-md-8 col-sm-8">
+            <div class="blog-content">
+               <p>
+                Time:{{ ps.created_date|date:'H :i' }},
+                Category:
+                {% for c in ps.category.all %}
+                <a href="sport.html">{{ c.cat_name }}</a>,
+                {% endfor %}
+                Posted By: <a href="#">{{ ps.user.first_name }}</a>.
+                
+              </p>
+              <h2>{{ ps.pst_title }}</h2>
+              <p>
+                {{ ps.content|truncatewords:30 }}
+              </p>
+              <a href="single-blog.html" class="btn btn-success">Readmore</a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      {% endif %}
+      
+     
+    </div>
+    {% include 'classwork_app/sidebar.html' %}
+    <!-- END OF ASIDE CONTENT -->
+  </div>
+</section>
+
+{% endblock %}

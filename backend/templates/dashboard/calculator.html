@@ -1,0 +1,39 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+<!Doctype html>
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <h3>Add Category</h3>
+        {% if messages %}
+        {% for mes in messages %}
+        <div class="alert {{mes.tags}}">{{ mes }}</div>
+        {% endfor %}
+        {% endif %}
+        <form method='Post' class="form-inline">
+            <div class="form-group">
+                <input type="text" name="num1" class="form-control" placeholder="Enter number 1">
+            </div>
+            <div class="form-group">
+                <select name="calculate" class="form-control">
+                    <option value="Add">Add</option>
+                    <option value="Subt">Subtract</option>
+                    <option value="Div">Division</option>
+                    <option value="Mult">Multiplication</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="text" name="num2" class="form-control" placeholder="Enter number 2">
+            </div>
+            <input type="submit" class="btn btn-primary" value="Calculate"> 
+            {% csrf_token %}
+        </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'classwork_app/base.html' %}
+{% load static %}
+<!Doctype html>
+{% block title %}
+About Us
+{% endblock %}
+
+{% block content %}
+<section id="sectionTitle">
+  <div class="pageTitle">
+    <h1>About Us</h1>
+  </div>
+</section>
+<!-- END OF PAGE TITLE -->
+<section id="content">
+  <div class="row">
+    <div class="col-sm-9 text-center" id="mainContent">
+      <div class="row">
+        {% if about1 %}
+        {% for a in about1 %}
+        <div class="col-sm-4">
+          <a href="detail.html">
+              <img src="{{ a.profile.url }}" class="img-circle">
+          </a>
+          <h2>{{ a.abt_title }}</h2>
+          <p>
+            {{ a.description| truncatewords:30 }}
+          </p>
+          <a href="{% url 'classwork_app:about_detail' a.id %}" class="btn btn-primary">Readmore</a>
+        </div>
+        {% endfor %}
+        {% endif %}
+      
+        
+      </div>
+    </div>
+    {% include 'classwork_app/sidebar.html' %}
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+<!Doctype html>
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-6 offset-3">
+        <h3>Add Category</h3>
+       
+      
+        <form method='Post' class="form">
+            {% include 'dashboard/snippet-form.html' with form=cat %}
+            <button type="submit" class="btn btn-success btn-block">Add Category</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'dashboard/base.html' %}
+{% load static %}
+<!Doctype html>
+{% block title %}
+Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-6 offset-3">
+        <h3>Do you really want to logout?</h3>
+        <a href="{% url 'backend:logout_view' %}">Logout</a>
+       
+    </div>
+</div>
+
+{% endblock %}

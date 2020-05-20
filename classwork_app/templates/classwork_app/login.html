@@ -1,0 +1,47 @@
+{% extends 'classwork_app/base.html' %}
+{% load static %}
+<!Doctype html>
+{% block title %}
+About Us
+{% endblock %}
+
+{% block content %}
+<section id="sectionTitle">
+  <div class="pageTitle">
+    <h1>Login</h1>
+  </div>
+</section>
+<!-- END OF PAGE TITLE -->
+<section id="content">
+  <div class="row">
+    <div class="col-sm-9 text-center" id="mainContent">
+      <div class="row">
+        <div class="col-sm-12">
+          <h3>Login</h3>
+          {% if messages %}
+          {% for mes in messages %}
+          <div class="alert {{mes.tags}}">{{ mes }}</div>
+          {% endfor %}
+          {% endif %}
+          <form method='POST' class="form">
+              <div class="form-group">
+                  <label>Username</label>
+                  <input type="text" name="username"  class="form-control" placeholder="Enter Username">
+              </div>
+              <div class="form-group">
+                  <label>Password</label>
+                  <input type="password" name="password" class="form-control" placeholder="Enter Password">
+              </div>
+              {% csrf_token %}
+              <input type="submit" value='Login'>
+          </form>
+        </div>
+       
+      
+        
+      </div>
+    </div>
+    {% include 'classwork_app/sidebar.html' %}
+  </div>
+</section>
+{% endblock %}

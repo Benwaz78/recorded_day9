@@ -1,0 +1,62 @@
+{% extends 'classwork_app/base.html' %}
+{% load static %}
+<!Doctype html>
+{% block title %}
+Contact Us
+{% endblock %}
+
+{% block content %}
+<section id="sectionTitle">
+  <div class="pageTitle">
+    <h1>Contact Us</h1>
+  </div>
+</section>
+<!-- END OF PAGE TITLE -->
+<section id="content">
+  <div class="row">
+    <div class="col-sm-9" id="mainContent">
+     
+      <form method="post">
+
+      		{% if messages %}
+      			{% for mes in messages %}
+      			<div class="alert alert-success">{{ mes}}</div>
+      			{% endfor %}
+      		{% endif %}
+
+      		{% for hidden in con.hidden_fields %}
+      			<!-- Show errors -->
+      			{% if hidden.errors %}
+      				{% for err in hidden.errors %}
+      					<span class="alert alert-danger">{{ err }}</span>
+      				{% endfor %}
+      			{% endif %}
+				
+				<!-- Show hidden field on inspect -->
+      			{{ hidden }}
+      		{% endfor %}
+
+	      	{% for fields in con.visible_fields %}
+	      		{% if fields.errors %}
+	      			{% for error in fields.errors %}
+	      				<span class="alert alert-danger">{{ error }}</span>
+	      			{% endfor %}
+	      		{% endif %}
+
+	  			<div class="form-group">
+	  				{{ fields.label_tag }}
+	  				{{ fields }}
+	  			</div>
+
+	      	{% endfor %}
+      	{% csrf_token %}
+      	<input type="submit" value="Send" class="btn btn-primary">
+      </form>
+     
+    </div>
+    {% include 'classwork_app/sidebar.html' %}
+    <!-- END OF ASIDE CONTENT -->
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'classwork_app/base.html' %}
+{% load static %}
+<!Doctype html>
+{% block title %}
+Users
+{% endblock %}
+
+{% block content %}
+<section id="sectionTitle">
+  <div class="pageTitle">
+    <h1>Users</h1>
+  </div>
+</section>
+<!-- END OF PAGE TITLE -->
+<section id="content">
+  <div class="row">
+    <div class="col-sm-9" id="mainContent">
+      <div class="row">
+        <div class="col-sm-12">
+          <table class="table table-bordered">
+            <tr>
+              <th>S/N</th>
+              <th>Username</th>
+              <th>Firstname</th>
+              <th>Lastname</th>
+            </tr>
+
+            {% if users %}
+              {% for u in users %}
+                <tr>
+                  <td>{{ forloop.counter }}</td>
+                  <td>{{ u.username }}</td>
+                  <td>{{ u.first_name }}</td>
+                  <td>{{ u.last_name }}</td>
+                </tr>
+              {% endfor %}
+            {% endif %}
+
+          </table>
+        </div>
+      </div>
+    </div>
+    {% include 'classwork_app/sidebar.html' %}
+  </div>
+</section>
+{% endblock %}

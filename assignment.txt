@@ -1,0 +1,5 @@
+1. Create a html file and write a code that will display all 
+   the post coming from different categories.
+2. If you have not done any of the assignment make sure you do 
+   all of them.
+3. Host your work on pythonanywhere.com
